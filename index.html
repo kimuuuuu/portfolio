@@ -1,0 +1,2487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Apple</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', 'Noto Sans KR';
+        }
+        /*nav시작*/
+        
+        .full-nav {
+            display: none;
+            width: 100%;
+            height: auto;
+        }
+        
+        .full-label {
+            position: fixed;
+            top: 45px;
+            left: 50px;
+            z-index: 300;
+            cursor: pointer;
+            color: #000;
+            opacity: 0.7;
+        }
+        
+        .full-span {
+            position: absolute;
+            z-index: 300;
+            background-color: #000;
+            transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform-origin: left center;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            -ms-transform-origin: left center;
+            transition: all 0.5s ease-in-out;
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+        }
+        
+        .full-nav:checked + .full-cntr > .full-span {
+            background-color: #000;
+        }
+        
+        .full-span:nth-child(1) {
+            top: 20%;
+        }
+        
+        .full-nav:checked + .full-label > .full-span:nth-child(1) {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            background: white;
+        }
+        
+        .full-span:nth-child(2) {
+            top: 60%;
+        }
+        
+        .full-nav:checked + .full-label > .full-span:nth-child(2) {
+            opacity: 0;
+            background: white;
+            transition: opacity 0.1s ease-out 0s;
+            -webkit-transition: opacity 0.1s ease-out 0s;
+            -moz-transition: opacity 0.1s ease-out 0s;
+            -o-transition: opacity 0.1s ease-out 0s;
+            -ms-transition: opacity 0.1s ease-out 0s;
+        }
+        
+        .full-span:nth-child(3) {
+            top: 100%;
+        }
+        
+        .full-nav:checked + .full-label > .full-span:nth-child(3) {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            background: white;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0%;
+            bottom: 0%;
+            left: 0%;
+            right: 0%;
+            width: 100%;
+            height: auto;
+            background-color: #000;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease-out 0s;
+            -webkit-transition: opacity 0.3s ease-out 0s;
+            -moz-transition: opacity 0.3s ease-out 0s;
+            -o-transition: opacity 0.3s ease-out 0s;
+            -ms-transition: opacity 0.3s ease-out 0s;
+        }
+        
+        .full-nav:checked ~ nav {
+            opacity: 0.9;
+            z-index: 200;
+            transition: opacity 0.3s ease-out 0s;
+            -webkit-transition: opacity 0.3s ease-out 0s;
+            -moz-transition: opacity 0.3s ease-out 0s;
+            -o-transition: opacity 0.3s ease-out 0s;
+            -ms-transition: opacity 0.3s ease-out 0s;
+        }
+        
+        .full-nav-ul {
+            position: relative;
+            top: 20%;
+            width: 20%;
+            height: auto;
+            margin: 0 auto;
+            list-style-type: none;
+        }
+        
+        .full-nav-cntr {
+            position: absolute;
+            top: 48%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            transform: translate(0%, -50%);
+            -webkit-transform: translate(0%, -50%);
+            -moz-transform: translate(0%, -50%);
+            -o-transform: translate(0%, -50%);
+            -ms-transform: translate(0%, -50%);
+        }
+        
+        .full-nav-ul li {
+            list-style: none;
+            font-size: 3vmax;
+            text-align: center;
+        }
+        
+        .full-nav-a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .full-nav-a:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: attr(data-content);
+            display: inline-block;
+            color: #575857;
+            width: 100%;
+            clip: rect(0, 0, 0, 0);
+            transition: clip cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s;
+            -webkit-transition: clip cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s;
+            -moz-transition: clip cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s;
+            -o-transition: clip cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s;
+            -ms-transition: clip cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s;
+        }
+        /*메인영상시작*/
+        
+        #main {
+            width: 100%;
+        }
+        
+        #mainM {
+            width: 100%;
+            margin: 0 auto;
+            background-color: dimgrey;
+        }
+        
+        .video {
+            position: relative;
+            width: 80%;
+            height: 100%;
+            margin: 0 auto;
+        }
+        
+        .video video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            mask: url("images/applemp4.svg") no-repeat center;
+            -webkit-mask: url("images/applemp4.svg") no-repeat center;
+            -moz-mask: url("images/applemp4.svg") no-repeat center;
+            -o-mask: url("images/applemp4.svg") no-repeat center;
+            -ms-mask: url("images/applemp4.svg") no-repeat center;
+            mask-size: 60%;
+            -webkit-mask-size: 60%;
+            -moz-mask-size: 60%;
+            -o-mask-size: 60%;
+            -ms-mask-size: 60%;
+            transform: translate(-52%, -50%);
+            -webkit-transform: translate(-52%, -50%);
+            -moz-transform: translate(-52%, -50%);
+            -ms-transform: translate(-52%, -50%);
+            -o-transform: translate(-52%, -50%);
+        }
+        /*search 시작*/
+        
+        #search {
+            width: 100%;
+        }
+        
+        .searchform {
+            display: block;
+            margin: 0;
+            overflow: hidden;
+            width: 40%;
+            margin: 4% auto;
+            box-sizing: border-box;
+        }
+        
+        label,
+        input {
+            vertical-align: baseline;
+            color: lightgray;
+            margin-right: 1%;
+        }
+        
+        label {
+            display: block;
+            width: 5%;
+            float: right;
+            cursor: pointer;
+            font-size: 1vmax;
+        }
+        
+        input[type="search"] {
+            background-color: transparent;
+            width: 93%;
+            float: left;
+            font-size: 1.5vmax;
+        }
+        
+        input[type="search"]:focus {
+            color: dimgray;
+            border-color: dimgray;
+            outline: none;
+        }
+        /*iMac시작*/
+        
+        #iMac {
+            width: 100%;
+            border: 1px solid black;
+            overflow: hidden;
+            float: left;
+            clear: both;
+            box-sizing: border-box;
+        }
+        
+        .iMac {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .in-iMac1,
+        .in-iMac2 {
+            width: 50%;
+            height: 100%;
+            float: left;
+            overflow: hidden;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        
+        .in-iMac1 .in-iMac-img {
+            width: 55%;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+        
+        .in-iMac1 .in-iMac-bg {
+            width: 80%;
+            height: 80%;
+            display: block;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            z-index: -1;
+        }
+        
+        .in-iMac2 h1 {
+            display: block;
+            font-size: 3vmax;
+            margin: 10% 0 0 10%;
+            position: relative;
+        }
+        
+        .in-iMac2 h3 {
+            display: block;
+            font-size: 2vmax;
+            margin: 6% 0 0 10%;
+            position: relative;
+        }
+        
+        .in-iMac2 p {
+            display: block;
+            font-size: 1vmax;
+            margin: 8% 0 0 10%;
+            font-weight: 300;
+            position: relative;
+        }
+        
+        .in-iMac-text p:last-of-type {
+            display: none;
+        }
+        
+        .in-iMac-text a {
+            display: none;
+        }
+        /*iPad 시작*/
+        
+        #iPad {
+            width: 100%;
+            display: block;
+            float: left;
+            clear: both;
+        }
+        
+        .in-iPad {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .iPad-1 {
+            width: 100%;
+            height: 100%;
+            background: black;
+            position: absolute;
+            top: 0;
+        }
+        
+        .iPad-1 h1 {
+            display: block;
+            color: white;
+            text-align: center;
+            margin-top: 3%;
+            font-size: 3vmax;
+        }
+        
+        .iPad-1 h3 {
+            display: block;
+            color: white;
+            text-align: center;
+            font-size: 1.5vmax;
+        }
+        
+        .iPad-1 img {
+            width: 60%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+        /*iPhone시작*/
+        
+        #iPhone {
+            display: block;
+            width: 100%;
+            clear: both;
+            float: left;
+            background: url(images/iPhonebg.png) no-repeat left 0px fixed;
+            background-size: cover;
+            color: white;
+        }
+        
+        .in-iPhone1 {
+            width: 60%;
+            height: 100%;
+        }
+        
+        .in-iPhone1 > p {
+            width: 10%;
+            border: 1px solid white;
+            display: block;
+            text-align: center;
+            padding: 0.5%;
+            border-radius: 10px;
+            margin: 5% 0 0 15%;
+            float: left;
+            clear: both;
+        }
+        
+        .in-iPhone1 > h1 {
+            display: block;
+            width: 20%;
+            margin-left: 15%;
+            font-size: 3vmax;
+            float: left;
+            clear: both;
+        }
+        
+        .in-iPhone1 > img {
+            width: 12%;
+            margin: 4% 0 0 15%;
+            float: left;
+            clear: both;
+        }
+        
+        .in-iPhone1 > h3 {
+            display: block;
+            margin: 4.15% 0 0 3%;
+            font-size: 1.5vmax;
+            float: left;
+        }
+        
+        .in-iPhone2 {
+            width: 70%;
+            float: left;
+            margin: 7.5% 0 0 15%;
+            overflow: hidden;
+        }
+        
+        .in-iPhone2 img {
+            width: 100%;
+        }
+        
+        .in-iPhone2 p {
+            display: block;
+            margin-top: 2%;
+            font-size: 1vmax;
+            text-align: center;
+        }
+        
+        .in-iPhone2 a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.5em;
+            display: block;
+            margin-top: 4%;
+            text-align: right;
+            width: 20%;
+            float: right;
+        }
+        
+        .in-iPhone2 a:hover {
+            text-decoration: underline;
+        }
+        /*watch시작*/
+        
+        #Watch {
+            width: 100%;
+            display: block;
+            float: left;
+            clear: both;
+        }
+        
+        .Watch .in-Watch .in-11 {
+            background: url(images/series2-1.png) center;
+            background-size: cover;
+        }
+        
+        .Watch .in-Watch .in-22 {
+            background: url(images/nike.png) center;
+            background-size: cover;
+        }
+        
+        .Watch .in-Watch .in-33 {
+            background: url(images/hermes.png) center;
+            background-size: cover;
+        }
+        
+        .Watch .in-Watch .in-44 {
+            background: url(images/edition.png) center;
+            background-size: cover;
+        }
+        
+        .Watch .in-Watch .in-55 {
+            background: url(images/series1.png) center;
+            background-size: cover;
+        }
+        /*music 시작*/
+        
+        #Music {
+            width: 100%;
+            display: block;
+            float: left;
+            clear: both;
+            background-color: white;
+        }
+        
+        #Music,
+        #in-Music,
+        #in-Music1,
+        #slider,
+        #slider h1 {
+            display: block;
+        }
+        
+        #in-Music {
+            width: 80%;
+            height: 60%;
+            margin: 0 auto;
+        }
+        /*music2시작*/
+        
+        #in-Music2 {
+            width: 100%;
+            height: 35%;
+            display: block;
+            float: left;
+        }
+        
+        .in-Music-2 {
+            width: 100%;
+            height: 85%;
+        }
+        
+        #in-Music2 .in {
+            display: block;
+            float: left;
+            background-color: black;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .Music2-1 img,
+        .Music2-2 img,
+        .Music2-3 img,
+        .Music2-4 img {
+            height: 100%;
+            position: absolute;
+        }
+        
+        .in .Music-text {
+            width: 70%;
+            text-align: center;
+            position: absolute;
+            color: white;
+            top: 50%;
+            left: 50%;
+        }
+        
+        .in .Music-text p,
+        .in .Music-text h1 {
+            margin-bottom: 7%;
+            font-size: 1.1vmax;
+        }
+        
+        .in .Music-text h1:last-of-type {
+            margin-bottom: 8%;
+            font-size: 1.3vmax;
+        }
+        
+        .in .Music-text a {
+            text-decoration: none;
+            color: white;
+            margin-bottom: 5%;
+            display: block;
+            font-weight: 100;
+        }
+        
+        .in .text-4 a:first-of-type {
+            margin-bottom: 1%;
+        }
+        
+        .in .Music-text a:hover {
+            text-decoration: underline;
+        }
+        /*고객지원 시작*/
+        
+        #Custom {
+            display: block;
+            clear: both;
+            float: left;
+            width: 100%;
+            background: url(images/custom.png) no-repeat center;
+            background-size: cover;
+        }
+        
+        #Custom h1,
+        #Custom h3,
+        #Custom a {
+            display: block;
+            width: 60%;
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        #Custom h1 {
+            margin-top: 5%;
+            font-size: 2.3vmax;
+        }
+        
+        #Custom h3 {
+            margin-top: 1.8%;
+            font-size: 1.5vmax;
+        }
+        
+        #Custom a {
+            margin-top: 1.5%;
+            font-size: 1.1vmax;
+            text-decoration: none;
+            color: dimgray;
+            height: 5%;
+        }
+        
+        #Custom a:hover {
+            text-decoration: underline;
+        }
+        /*footer 시작*/
+        
+        footer {
+            width: 100%;
+            height: 550px;
+            display: block;
+            float: left;
+            clear: both;
+            background-color: #e0e0e0;
+        }
+        
+        #footer {
+            width: 70%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+            font-size: 0.8em;
+            color: dimgray;
+        }
+        
+        #footer .top p:first-of-type {
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid gray;
+            height: 2%;
+            padding: 2% 0;
+        }
+        
+        .middle i {
+            padding: 0.8%;
+            display: block;
+            font-size: 1.5em;
+        }
+        
+        .middle {
+            display: block;
+            width: 100%;
+            height: 60%;
+        }
+        
+        .footerM1,
+        .footerM2,
+        .footerM3,
+        .footerM4,
+        .footerM5,
+        .footerM6,
+        .footerM7 {
+            display: block;
+            width: 20%;
+            float: left;
+            box-sizing: border-box;
+        }
+        
+        .footerM p {
+            font-weight: bolder;
+            display: block;
+            padding: 5% 0;
+        }
+        
+        .footerM ul li {
+            display: block;
+            width: 100%;
+            padding: 1.5% 0;
+        }
+        
+        .footerM a {
+            text-decoration: none;
+            color: gray;
+            display: block;
+            width: 80%;
+            height: 100%;
+        }
+        
+        .footerM a:hover {
+            text-decoration: underline;
+        }
+        
+        .footerM li {
+            list-style-type: none;
+        }
+        
+        .bottome {
+            width: 100%;
+            height: 25%;
+        }
+        
+        .bottome > span {
+            display: block;
+            width: 100%;
+            height: 20%;
+            border-bottom: 1px solid gray;
+            padding-bottom: 0.4%;
+        }
+        
+        .bottome > span a:first-of-type {
+            font-weight: bolder;
+            font-size: 1.2em;
+        }
+        
+        .bottome > span a:last-of-type {
+            text-decoration: none;
+            color: dodgerblue;
+        }
+        
+        .in-bottome span {
+            display: block;
+            width: 23%;
+            clear: both;
+            float: left;
+            padding: 0.7% 0;
+        }
+        
+        .in-bottome span a {
+            font-weight: bolder;
+            font-size: 1.2em;
+        }
+        
+        .in-bottome ul {
+            display: block;
+            width: 550px;
+            float: left;
+            margin-top: 0.9%;
+        }
+        
+        .in-bottome ul li {
+            display: inline;
+            padding: 0 3.5%;
+            border-right: 1px solid gray;
+        }
+        
+        .in-bottome ul li a {
+            text-decoration: none;
+            color: gray;
+            font-weight: bold;
+        }
+        
+        .in-bottome ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .in-bottome ul li:last-of-type {
+            border: none;
+        }
+        
+        .in-bottome > p {
+            display: block;
+            display: block;
+            float: left;
+            clear: both;
+            padding-bottom: 0.5%;
+        }
+        
+        @media screen and (max-width: 650px){
+            .full-label{
+                width: 35px;
+                height: 30px;
+            }
+            
+            .full-span{
+                width: 35px;
+                height: 3.5px;
+            }
+            
+            .full-nav:checked + .full-cntr > .full-span {
+                border-radius: 10px;
+            }
+            .full-nav:checked + .full-label > .full-span:nth-child(1) {
+                width: 35px;
+                border-radius: 10px;
+            }
+            
+            .full-nav:checked + .full-label > .full-span:nth-child(2) {
+                width:20px;
+            }
+            
+            .full-nav:checked + .full-label > .full-span:nth-child(3){
+                width: 35px;
+                border-radius: 10px;
+            }
+            
+            .full-nav-ul{
+                width: 30%;
+                top: 27%;
+            }
+            .full-nav-ul li{
+                font-size: 4.5vmax;
+                padding-bottom: 3%;
+            }
+            
+            /*메인 영상 시작*/
+            
+            #mainM{
+                height: 400px;
+                overflow: hidden;
+            }
+            
+            /*search 시작*/
+            
+            #search{
+                height: 50px;
+            }
+            .searchform{
+                width: 50%;
+            }
+            input[type="search"]{
+                border: 3px solid lightgray;
+                border-width: 0 0 2px;
+                margin-top: 2%;
+            }
+            
+            
+            /*iMac 시작*/
+            
+            #iMac{
+                height: 300px;
+                overflow: hidden;
+            }
+            
+            .in-iMac1 .in-iMac-img, .in-iMac1 .in-iMac-bg{
+                transform: translate(-50%,-50%);
+            }
+            
+            .in-iMac1 .in-iMac-bg{
+                opacity: 1;
+            }
+            
+            .in-iMac-bg2{
+                display: none;
+            }
+            
+            .in-iMac2 h1{
+                font-size: 5vmax;
+                margin-top: 20%;
+            }
+            
+            .in-iMac2 h3{
+                font-size: 3vmax;
+            }
+            
+            .in-iMac2 p:first-of-type{
+                display: none;
+            }
+            
+            .in-iMac-text p:last-of-type{
+                display: none;
+            }
+            
+            .in-iMac-text a{
+                display: block;
+                font-size: 2.2vmax;
+                margin: 15% 10% 0 0;
+                color: black;
+                text-align: right;
+                text-decoration: none;
+            }
+            
+            /*iPad 시작*/
+            
+            #iPad {
+                height: 300px;
+                overflow: hidden;
+            }
+            
+            .iPad-2-img{
+                display: none;
+            }
+            
+            .iPad-1 h1{
+                margin-top: 4%;
+                font-size: 5vmax;
+            }
+            
+            .iPad-1 h3{
+                font-weight: 400;
+                margin-top: 2%;
+                font-size: 2vmax;
+            }
+            
+            .iPad-1 a{
+                display: none;
+            }
+            
+            .iPad-1 img{
+                margin-top: 2%;
+            }
+            .iPad-2 img{
+                display: none;
+            }
+            
+            /*iPhone시작*/
+            
+            #iPhone{
+                height: 300px;
+                background: url(images/iPhonebg-1.png) no-repeat center;
+                background-size: cover;
+                overflow: hidden;
+            }
+            
+            .in-iPhone1{
+                margin-top: 3%;
+            }
+            .in-iPhone1 > p{
+                width: 20%;
+            }
+            
+            .in-iPhone1 > h3{
+                font-size: 2vmax;
+                margin-top: 5%;
+            }
+            .in-iPhone1{
+                width: 100%;
+            }
+            
+            .in-iPhone1 > h1{
+                margin-top: 3%;
+                font-size: 5vmax;
+            }
+            
+            .in-iPhone2 img{
+                display: none;
+            }
+            
+            .in-iPhone2{
+                margin-top: 0;
+            }
+            
+            .in-iPhone2 p{
+                display: none;
+            }
+            
+            .in-iPhone2 a{
+                width: 200px;
+                font-weight: 300;
+                font-size: 3vmax;
+                float: left;
+            }
+            
+            /*watch시작*/
+            
+            #Watch{
+                height: 300px;
+                overflow: hidden;
+            }
+            
+            .in-22, .in-33, .in-44, .in-55{
+                display: none;
+            }
+            
+            .Watch{
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+            
+            .Watch-11{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .Watch .in-Watch .in-11{
+                background: url(images/series2-2.png) no-repeat center;
+                background-size: cover;
+            }
+            .in-Watch h1, .in-Watch h3, .in-Watch a{
+                display: block;
+                float: right;
+                clear: both;
+            }
+            
+            .in-Watch h1{
+                margin:15.5% 15% 0 0;
+                font-size: 5vmax;
+            }
+            
+            .in-Watch h3, .in-Watch a{
+                margin: 2% 15% 0 0;
+            }
+            
+            .in-Watch a{
+                text-decoration: none;
+                color: black;
+            }
+            
+            /*Music시작*/
+            
+            #Music{
+                height: 300px;
+                cursor: pointer;
+                overflow: hidden;
+            }
+            #in-Music{
+                display: none;
+            }
+            
+            #in-Music2{
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+            
+            .in-Music-2{
+                width: 100%;
+                height: 100%;
+            }
+            
+            .Music2-2, .Music2-3, .Music2-4{
+                display: none;
+            }
+            .Music2-1{
+                border-right: 1px solid blue;
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+            .Music2-1 img:last-of-type{
+                display: none;
+            }
+            .Music2-1 img:first-of-type{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+            .Music2-1 .Music-text{
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .Music2-1 p, .Music2-1 h1, .Music2-1 a:last-of-type{
+                display: block;
+                text-align: left;
+                color: black;
+            }
+            .Music2-1 .Music-text p{
+                font-size: 5vmax;
+                font-weight: 600;
+                padding-left: 15%;
+                margin-top: 5%;
+                margin-bottom: 0;
+            }
+            
+            .in .Music-text h1:last-of-type{
+                font-size: 2.8vmax;
+                font-weight: 600;
+                margin-bottom: 0;
+                padding-left: 15%;
+                margin-top: 1%
+            }
+            
+            .Music2-1 .Music-text a:last-of-type{
+                float: right;
+                margin:22% 24.5% 0 0;
+                font-size: 2.5vmax;
+            }
+            
+            /*고객지원시작*/
+            #Custom{
+                height: 300px;
+            }
+            #Custom h1{
+                font-size: 4vmax;
+            }
+            
+            #Custom h3{
+                font-size: 2.5vmax;
+                margin-top: 1.5%
+            }
+            
+            #Custom a{
+                font-size: 2vmax;
+            }
+            
+            /*footer 시작*/
+            
+            .middle{
+                display: none;
+            }
+            footer{
+                height: 200px;
+                overflow: hidden;
+            }
+            
+            #footer .top{
+                margin-top: 2%;
+            }
+            #footer .top p{
+                font-size: 1.5vmax;
+            }
+            .bottome > span{
+                padding-bottom: 3%;
+                font-size: 1.5vmax;
+                margin-top: 2%;
+            }
+            .in-bottome{
+                margin-top: 1%;
+            }
+            .in-bottome span{
+                width: 50%;
+                font-size: 1.5vmax;
+            }
+            .in-bottome ul{
+                margin-bottom: 2%;
+            }
+            .in-bottome ul li{
+                font-size: 1.5vmax;
+            }
+            .in-bottome ul li:first-of-type{
+                padding-left: 0;
+            }
+            .in-bottome p{
+                font-size: 1.5vmax;
+            }
+        }
+        
+        @media screen and (min-width: 650px) and (max-width: 1023px) {
+            /*nav 시작*/
+            .full-label {
+                position: fixed;
+                width: 40px;
+                height: 35px;
+            }
+            .full-span {
+                width: 40px;
+                height: 4px;
+                border-radius: 20px;
+                color: white;
+            }
+            .full-nav:checked + .full-cntr > .full-span {
+                border-radius: 5px;
+            }
+            .full-nav:checked + .full-label > .full-span:nth-child(1) {
+                width: 40px;
+            }
+            .full-nav:checked + .full-label > .full-span:nth-child(2) {
+                width: 20px;
+            }
+            .full-nav:checked + .full-label > .full-span:nth-child(3) {
+                width: 40px;
+            }
+            .full-span:nth-child(1) {
+                top: 20%;
+            }
+            .full-nav-ul li {
+                font-size: 4.5vmax;
+            }
+            /*메인 영상 시작*/
+            #mainM {
+                height: 550px;
+            }
+            /*search 시작*/
+            #search {
+                height: 50px;
+            }
+            input[type="search"] {
+                border: 3px solid lightgray;
+                border-width: 0 0 3px;
+            }
+            /*iMac 시작*/
+            #iMac {
+                height: 400px;
+            }
+            .in-iMac1 .in-iMac-img,
+            .in-iMac1 .in-iMac-bg {
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+            }
+            .in-iMac1 .in-iMac-bg {
+                opacity: 1;
+            }
+            .in-iMac-bg2 {
+                display: none;
+            }
+            .in-iMac2 h1 {
+                font-size: 4vmax;
+                margin-top: 12%;
+            }
+            .in-iMac2 h3 {
+                font-size: 2.5vmax;
+            }
+            .in-iMac-text p:first-of-type {
+                display: none;
+            }
+            .in-iMac-text p:last-of-type {
+                border: 1px solid black;
+                text-align: center;
+                font-size: 2vmax;
+                font-weight: 600;
+                display: block;
+                width: 20%;
+                padding: 2%;
+                border-radius: 20px;
+                line-height: 30px;
+            }
+            .in-iMac-text a {
+                text-decoration: none;
+                display: block;
+                margin: 10% 10% 0 0;
+                color: black;
+                font-size: 1.8vmax;
+                text-align: right;
+            }
+            /*iPad 시작*/
+            #iPad {
+                height: 400px;
+            }
+            .iPad-2-img {
+                display: none;
+            }
+            .iPad-1 h1 {
+                margin-top: 2%;
+                font-size: 4vmax;
+            }
+            .iPad-1 h3 {
+                font-size: 2vmax;
+            }
+            .iPad-1 a {
+                text-align: center;
+                display: block;
+                margin-top: 2%;
+                text-decoration: none;
+                color: white;
+            }
+            .iPad-2 img {
+                display: none;
+            }
+            /*iPhone 시작*/
+            #iPhone {
+                height: 400px;
+            }
+            .in-iPhone1 > p {
+                width: 20%;
+            }
+            .in-iPhone1 {
+                width: 80%;
+            }
+            .in-iPhone1 > h1 {
+                margin-top: 2%;
+                font-size: 4vmax;
+            }
+            .in-iPhone2 img {
+                display: none;
+            }
+            .in-iPhone2 {
+                margin-top: 2%;
+            }
+            .in-iPhone2 p {
+                font-size: 2vmax;
+                text-align: left;
+            }
+            .in-iPhone2 a {
+                width: 200px;
+                font-weight: 400;
+                font-size: 2vmax;
+            }
+            /*watch 시작*/
+            .#Watch {
+                height: 400px;
+            }
+            .Watch {
+                width: 100%;
+                height: 400px;
+                display: block;
+                position: relative;
+            }
+            .Watch-11 {
+                position: absolute;
+                width: 20%;
+                float: left;
+                height: 100%;
+                display: block;
+                text-align: center;
+            }
+            .in-Watch h1 {
+                font-size: 3vmax;
+                margin-top: 23%;
+            }
+            .in-Watch h3 {
+                font-size: 1.4vmax;
+                margin-top: 5%;
+            }
+            .in-Watch a {
+                display: block;
+                text-decoration: none;
+                color: black;
+                font-size: 1.2vmax;
+                margin-top: 10%;
+            }
+            .in-22 {
+                left: 20%;
+            }
+            .in-33 {
+                left: 40%;
+            }
+            .in-44 {
+                left: 60%;
+            }
+            .in-55 {
+                left: 80%;
+            }
+            /*Music 시작*/
+            #Music {
+                height: 400px;
+                cursor: pointer;
+            }
+            #in-Music {
+                display: none;
+            }
+            .in-Music-2 {
+                width: 100%;
+                height: 100%;
+                border: 1px solid blue;
+            }
+            #in-Music2 {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+            .in-Music-2 .in {
+                width: 50%;
+                height: 50%;
+            }
+            .in img:first-of-type {
+                display: none;
+            }
+            .in img:last-of-type {
+                display: block;
+                width: 50%;
+                height: 82%;
+                margin-top: 3.5%;
+            }
+            .in .Music-text {
+                width: 50%;
+                top: 30%;
+                left: 50%;
+            }
+            .in .Music-text p {
+                font-size: 2.5vmax;
+                font-weight: 600;
+            }
+            .in .Music-text h1 {
+                font-size: 1.2vmax;
+                font-weight: 400;
+            }
+            .in .Music-text a {
+                font-size: 1.4vmax;
+                display: none;
+            }
+            .text-4 a:last-of-type {
+                display: none;
+            }
+            /*고객지원*/
+            #Custom {
+                height: 400px;
+            }
+            #Custom h1 {
+                font-size: 3vmax;
+            }
+            #Custom h3 {
+                font-size: 2vmax;
+            }
+            #Custom a {
+                font-size: 1.3vmax;
+                margin-top: 2.2%;
+            }
+            /*footer 시작*/
+            .middle {
+                display: none;
+            }
+            footer {
+                height: 250px;
+                overflow: hidden;
+            }
+            #footer {}
+            #footer .top {
+                margin-top: 2.2%;
+            }
+            #footer .bottome {
+                margin-top: 2%;
+            }
+            .bottome > span {
+                padding-bottom: 3%;
+            }
+            .in-bottome {
+                margin-top: 1%;
+            }
+            .in-bottome span {
+                width: 50%;
+            }
+            .in-bottome ul {
+                padding-bottom: 2%
+            }
+            .in-bottome ul li:first-of-type {
+                padding-left: 0;
+            }
+        }
+        
+        @media screen and (min-width: 1025px) {
+            /*nav시작*/
+            .full-label {
+                width: 50px;
+                height: 30px;
+            }
+            .full-span {
+                width: 45px;
+                height: 5px;
+                border-radius: 30px;
+            }
+            .full-nav:checked + .full-cntr > .full-span {
+                border-radius: 10px;
+            }
+            .full-nav:checked + .full-label > .full-span:nth-child(1) {
+                width: 35px;
+            }
+            .full-nav:checked + .full-label > .full-span:nth-child(2) {
+                width: 30px;
+            }
+            .full-nav:checked + .full-label > .full-span:nth-child(3) {
+                width: 35px;
+            }
+            .full-nav-a:hover:before {
+                clip: rect(0, 250px, 600px, 0);
+                -webkit-clip: rect(0, 250px, 600px, 0);
+                -moz-clip: rect(0, 250px, 600px, 0);
+                -o-clip: rect(0, 250px, 600px, 0);
+                -ms-clip: rect(0, 250px, 600px, 0);
+            }
+            .last:before {
+                top: -17%;
+            }
+            /*메인영상시작*/
+            #mainM {
+                height: 800px;
+            }
+            /*search 시작*/
+            #search {
+                height: 100px;
+            }
+            input[type="search"] {
+                border: 4px solid lightgray;
+                border-width: 0 0 3px;
+            }
+            /*iMac시작*/
+            #iMac {
+                height: 700px;
+            }
+            .in-iMac1 .in-iMac-img {
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+            }
+            .in-iMac1 .in-iMac-bg {
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                transition: all 0.8s ease-in-out;
+                -webkit-transition: all 0.8s ease-in-out;
+                -moz-transition: all 0.8s ease-in-out;
+                -o-transition: all 0.8s ease-in-out;
+                -ms-transition: all 0.8s ease-in-out;
+            }
+            #iMac:hover .in-iMac-bg {
+                opacity: 1;
+            }
+            .in-iMac2 h1 {
+                opacity: 0;
+                left: 50%;
+                transition-delay: 0.05s;
+                -webkit-transition-delay: 0.05s;
+                -moz-transition-delay: 0.05s;
+                -o-transition-delay: 0.05s;
+                -ms-transition-delay: 0.05s;
+                transition: all 0.8s ease-out;
+                -webkit-transition: all 0.8s ease-out;
+                -moz-transition: all 0.8s ease-out;
+                -o-transition: all 0.8s ease-out;
+                -ms-transition: all 0.8s ease-out;
+            }
+            #iMac:hover .in-iMac2 h1 {
+                left: 0;
+                opacity: 1;
+            }
+            .in-iMac2 h3 {
+                opacity: 0;
+                left: 60%;
+                transition-delay: 0.1s;
+                -webkit-transition-delay: 0.1s;
+                -moz-transition-delay: 0.1s;
+                -o-transition-delay: 0.1s;
+                -ms-transition-delay: 0.1s;
+                transition: all 0.8s ease-in-out;
+                -webkit-transition: all 0.8s ease-in-out;
+                -moz-transition: all 0.8s ease-in-out;
+                -o-transition: all 0.8s ease-in-out;
+                -ms-transition: all 0.8s ease-in-out;
+            }
+            #iMac:hover .in-iMac2 h3 {
+                left: 0;
+                opacity: 1;
+            }
+            .in-iMac2 p {
+                opacity: 0;
+                left: 80%;
+                transition: all 0.85s ease;
+                -webkit-transition: all 0.85s ease;
+                -moz-transition: all 0.85s ease;
+                -o-transition: all 0.85s ease;
+                -ms-transition: all 0.85s ease;
+                transition-delay: 0.15s;
+                -webkit-transition-delay: 0.15s;
+                -moz-transition-delay: 0.15s;
+                -o-transition-delay: 0.15s;
+                -ms-transition-delay: 0.15s;
+            }
+            #iMac:hover .in-iMac2 p {
+                opacity: 1;
+                left: 0;
+            }
+            .in-iMac-bg2 {
+                display: block;
+                background: #1a1a1a;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                opacity: 1;
+                transition: all 0.2s ease;
+                -webkit-transition: all 0.2s ease;
+                -moz-transition: all 0.2s ease;
+                -o-transition: all 0.2s ease;
+                -ms-transition: all 0.2s ease;
+            }
+            .in-iMac-bg2 img {
+                width: 80%;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+            }
+            #iMac:hover .in-iMac-bg2 {
+                opacity: 0;
+            }
+            /*iPad시작*/
+            #iPad {
+                height: 700px;
+            }
+            .iPad-1 img {
+                opacity: 1;
+                transition: all 0.8s ease-in-out;
+                -webkit-transition: all 0.8s ease-in-out;
+                -moz-transition: all 0.8s ease-in-out;
+                -o-transition: all 0.8s ease-in-out;
+                -ms-transition: all 0.8s ease-in-out;
+            }
+            .iPad-1 a {
+                display: none;
+            }
+            #iPad:hover .iPad-1 img {
+                opacity: 0;
+            }
+            .iPad-2 {
+                display: block;
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .iPad-2-img {
+                display: block;
+                width: 40%;
+                height: auto;
+                margin: 9.4% auto 0 auto;
+                opacity: 0;
+                transition: all 0.5s ease-in-out;
+                -webkit-transition: all 0.5s ease-in-out;
+                -moz-transition: all 0.5s ease-in-out;
+                -o-transition: all 0.5s ease-in-out;
+                -ms-transition: all 0.5s ease-in-out;
+            }
+            #iPad:hover .iPad-2-img {
+                opacity: 1;
+            }
+            .iPad-Bar {
+                width: 80%;
+                height: auto;
+                margin: 0.8% auto 0 auto;
+                overflow: hidden;
+            }
+            .iPad-Bar h3 {
+                width: 100%;
+                display: block;
+                color: white;
+                font-size: 1.7em;
+                float: left;
+                opacity: 0;
+                font-weight: 500;
+                transition: all 0.5s ease-in;
+                -webkit-transition: all 0.5s ease-in;
+                -moz-transition: all 0.5s ease-in;
+                -o-transition: all 0.5s ease-in;
+                -ms-transition: all 0.5s ease-in;
+            }
+            #iPad:hover .iPad-Bar h3 {
+                opacity: 1;
+            }
+            .iPad-Bar img {
+                display: block;
+                width: 0;
+                height: 13px;
+                float: left;
+                clear: both;
+                margin-top: 1.5%;
+                transition: all 0.7s ease;
+                -webkit-transition: all 0.7s ease;
+                -moz-transition: all 0.7s ease;
+                -o-transition: all 0.7s ease;
+                -ms-transition: all 0.7s ease;
+            }
+            #iPad:hover .iPad-Bar img {
+                width: 100%;
+            }
+            .iPad-Bar p {
+                display: block;
+                color: white;
+                width: 15%;
+                text-align: right;
+                float: right;
+                clear: both;
+                overflow: hidden;
+                transition: all 0.8s ease-in;
+                -webkit-transition: all 0.8s ease-in;
+                -moz-transition: all 0.8s ease-in;
+                -o-transition: all 0.8s ease-in;
+                -ms-transition: all 0.8s ease-in;
+            }
+            .iPad-Bar p:first-of-type {
+                font-size: 2.3em;
+                font-weight: 700;
+                margin-top: 0.8%;
+                height: 46px;
+                width: 0;
+            }
+            #iPad:hover .iPad-Bar p:first-of-type {
+                width: 15%;
+            }
+            .iPad-Bar p:last-of-type {
+                font-size: 1.3em;
+                height: 29px;
+                opacity: 0;
+                transition: all 0.5s ease-in;
+                -webkit-transition: all 0.5s ease-in;
+                -moz-transition: all 0.5s ease-in;
+                -o-transition: all 0.5s ease-in;
+                -ms-transition: all 0.5s ease-in;
+            }
+            #iPad:hover .iPad-Bar p:last-of-type {
+                opacity: 1;
+            }
+            /*iPhone 시작*/
+            #iPhone {
+                height: 700px;
+            }
+            .in-iPhone2 img {
+                transform: translate(-101%, 0);
+                -webkit-transform: translate(-101%, 0);
+                -moz-transform: translate(-101%, 0);
+                -o-transform: translate(-101%, 0);
+                -ms-transform: translate(-101%, 0);
+                transition: all 1.5s ease;
+                -webkit-transition: all 1.5s ease;
+                -moz-transition: all 1.5s ease;
+                -o-transition: all 1.5s ease;
+                -ms-transition: all 1.5s ease;
+            }
+            .in-iPhone2 p {
+                transform: translate(-100%, 0);
+                -webkit-transform: translate(-100%, 0);
+                -moz-transform: translate(-100%, 0);
+                -o-transform: translate(-100%, 0);
+                -ms-transform: translate(-100%, 0);
+                transition: all 1.5s ease;
+                -webkit-transition: all 1.5s ease;
+                -moz-transition: all 1.5s ease;
+                -o-transition: all 1.5s ease;
+                -ms-transition: all 1.5s ease;
+            }
+            #iPhone:hover .in-iPhone2 img,
+            #iPhone:hover .in-iPhone2 p {
+                transform: translate(0, 0);
+                -webkit-transform: translate(0, 0);
+                -moz-transform: translate(0, 0);
+                -o-transform: translate(0, 0);
+                -ms-transform: translate(0, 0);
+            }
+            /*Watch 시작*/
+            #Watch {
+                height: 700px;
+            }
+            .Watch {
+                display: flex;
+                -webkit-display: flex;
+                -moz-display: flex;
+                -ms-display: flexbox;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+            }
+            .Watch:hover > .in-Watch {
+                filter: brightness(22%);
+            }
+            .Watch:hover > .in-Watch:hover {
+                filter: brightness(100%);
+            }
+            .Watch .in-Watch {
+                flex-grow: 1;
+                -webkit-flex-grow: 1;
+                -moz-flex-grow: 1;
+                -o-flex-grow: 1;
+                -ms-flex-grow: 1;
+                position: relative;
+                height: 100%;
+                transition: all 0.4s;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+                text-align: center;
+                flex: 1;
+            }
+            .Watch .in-Watch .Watch-11 {
+                position: relative;
+                margin: auto;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+            }
+            .Watch .in-Watch .Watch-11 h1 {
+                text-transform: uppercase;
+                font-size: 2.5em;
+                margin: 0;
+                vertical-align: middle;
+                padding-top: 25%;
+                transition: font-size 0.3s;
+                -webkit-transition: font-size 0.3s;
+                -moz-transition: font-size 0.3s;
+                -o-transition: font-size 0.3s;
+                -ms-transition: font-size 0.3s;
+            }
+            .Watch .in-Watch .Watch-11 h3 {
+                font-size: 1.3em;
+                letter-spacing: 1%;
+                transition: all 0.3s;
+                -webkit-transition: all 0.3s;
+                -moz-transition: all 0.3s;
+                -o-transition: all 0.3s;
+                -ms-transition: all 0.3s;
+            }
+            .Watch .in-Watch .Watch-11 p {
+                font-size: 0.9em;
+                transition: all 0.3s;
+                letter-spacing: 1%;
+                font-weight: 600;
+                padding-top: 2%;
+                opacity: 0;
+            }
+            .Watch-11 a {
+                text-decoration: none;
+                color: black;
+            }
+            .Watch .in-Watch:hover .Watch-11 p {
+                opacity: 1;
+            }
+            .Watch-11 a:hover {
+                text-decoration: underline;
+            }
+            .Watch .in-Watch:hover {
+                flex-grow: 1.3;
+                transition: flex 0.2s;
+                -webkit-transition: flex 0.2s;
+                -moz-transition: flex 0.2s;
+                -o-transition: flex 0.2s;
+                -ms-transition: flex 0.2s;
+            }
+            .Watch .in-Watch:hover .Watch-11 h1 {
+                font-size: 4em;
+                transition: font-size 0.4s;
+                -webkit-transition: font-size 0.4s;
+                -moz-transition: font-size 0.4s;
+                -o-transition: font-size 0.4s;
+                -ms-transition: font-size 0.4s;
+            }
+            .Watch .in-Watch:hover .Watch-11 h1 {
+                font-size: 2.5em;
+                transition: all 0.4s;
+                -webkit-transition: all 0.4s;
+                -moz-transition: all 0.4s;
+                -o-transition: all 0.4s;
+                -ms-transition: all 0.4s;
+            }
+            /*Music 시작*/
+            #Music {
+                height: 1500px;
+            }
+            #in-Music1 {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                margin-top: 5%;
+            }
+            #slider {
+                width: 100%;
+                height: 100%;
+                margin: auto;
+                overflow: hidden;
+                position: relative;
+            }
+            #slider h1 {
+                padding-left: 4%;
+                font-size: 2.5vmax;
+                margin-top: 2%;
+                text-align: center;
+            }
+            #slider #slides {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                position: relative;
+            }
+            #slider #slides>div {
+                list-style: none;
+                height: 60%;
+                width: 500%;
+                position: relative;
+                top: 19.5%;
+                margin-top: -4.5%;
+                padding: 0;
+                transform-style: preserve-3d;
+                -webkit-transform-style: preserve-3d;
+                -webkit-perspective: 600px;
+                -moz-perspective: 600px;
+                perspective: 700px;
+                -webkit-perspective-origin: 10% 50%;
+                -moz-perspective-origin: 10% 50%;
+                perspective-origin: 10% 50%;
+            }
+            #slides>div>span {
+                -webkit-transition: all 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+                -moz-transition: all 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+                -o-transition: all 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+                -ms-transition: all 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+                transition: all 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+                height: 100%;
+                width: 10%;
+                float: left;
+                border-radius: 5px;
+                opacity: 1;
+                overflow: hidden;
+                display: block;
+                position: relative;
+                font-size: 1.2vmax;
+                z-index: 1;
+            }
+            #slider input[type=radio] {
+                display: none;
+            }
+            #slider .arrows {
+                font-size: 1.8vmax;
+                color: #fff;
+                position: absolute;
+                top: 50%;
+                display: none;
+                cursor: pointer;
+                z-index: 50;
+                width: 3%;
+                height: 5%;
+                border-radius: 32px;
+                text-align: center;
+                padding: 7px 0 0 3px;
+                background: black;
+                box-shadow: 0 0 20px rgba(200, 235, 248, 0.98), inset 0px 11px 24px -8px rgba(255, 255, 255, 0.4);
+            }
+            #slider .arrows:hover {
+                box-shadow: 0 0 20px rgba(200, 235, 248, 0.98), inset 0px -11px 24px -8px rgba(255, 255, 255, 0.4);
+            }
+            #slides .info {
+                width: 100%;
+                height: 20%;
+                padding: 20px 20px 25px 20px;
+                position: relative;
+                top: 100%;
+                left: 0;
+                text-align: center;
+                border-radius: 5px 5px 0 0;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                display: block;
+                transition: all 0.7s 0.1s cubic-bezier(1, 0, 0.6, 1);
+                -webkit-transition: all 0.7s 0.1s cubic-bezier(1, 0, 0.6, 1);
+                -moz-transition: all 0.7s 0.1s cubic-bezier(1, 0, 0.6, 1);
+                -o-transition: all 0.7s 0.1s cubic-bezier(1, 0, 0.6, 1);
+                -ms-transition: all 0.7s 0.1s cubic-bezier(1, 0, 0.6, 1);
+                color: #fff;
+                font-weight: bold;
+                background-color: rgb(30, 30, 30);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+                line-height: 30px;
+            }
+            #slides .info p {
+                width: 100%;
+                display: block;
+                margin-top: 2%;
+                font-size: 1.5vmax;
+            }
+            #image-4 .info p {
+                margin-top: -0.4%;
+            }
+            #button-1:checked~#arrow-2,
+            #button-2:checked~#arrow-3,
+            #button-3:checked~#arrow-4 {
+                right: 27%;
+                display: block;
+                line-height: 40px;
+            }
+            #button-2:checked~#arrow-1,
+            #button-3:checked~#arrow-2,
+            #button-4:checked~#arrow-3,
+            #button-5:checked~#arrow-4 {
+                left: 27%;
+                display: block;
+                transform: rotateZ(180deg);
+                -webkit-transform: rotateZ(180deg);
+                -moz-transform: rotateZ(180deg);
+                -ms-transform: rotateZ(180deg);
+                -o-transform: rotateZ(180deg);
+                box-shadow: 0 0 20px rgba(200, 235, 248, 0.98), inset 0px -11px 24px -8px rgba(255, 255, 255, 0.4);
+                line-height: 40px;
+            }
+            #button-2:checked~#arrow-1:hover,
+            #button-3:checked~#arrow-2:hover,
+            #button-4:checked~#arrow-3:hover,
+            #button-5:checked~#arrow-4:hover {
+                box-shadow: 0 0 20px rgba(200, 235, 248, 0.98), inset 0px 11px 24px -8px rgba(255, 255, 255, 0.4);
+            }
+            #image-1 {
+                background: url('images/music1.jpg') no-repeat center;
+            }
+            #image-2 {
+                background: url('images/music2.jpg') no-repeat center;
+            }
+            #image-3 {
+                background: url('images/music3.jpg') no-repeat center;
+            }
+            #image-4 {
+                background: url('images/music4.jpg') no-repeat center;
+            }
+            #image-1,
+            #image-2,
+            #image-3,
+            #image-4 {
+                background: cover;
+                cursor: pointer;
+            }
+            #slider #button-1:checked~#slides>div #image-2,
+            #slider #button-1:checked~#slides>div #image-3,
+            #slider #button-1:checked~#slides>div #image-3,
+            #slider #button-2:checked~#slides>div #image-3,
+            #slider #button-2:checked~#slides>div #image-4,
+            #slider #button-3:checked~#slides>div #image-4 {
+                transform: rotateY(-10deg) scale(0.8) translateX(-10%);
+                -webkit-transform: rotateY(-10deg) scale(0.8) translateX(-10%);
+                -moz-transform: rotateY(-10deg) scale(0.8) translateX(-10%);
+                -o-transform: rotateY(-10deg) scale(0.8) translateX(-10%);
+                -ms-transform: rotateY(-10deg) scale(0.8) translateX(-10%);
+                z-index: 0;
+                opacity: 0.5;
+            }
+            #slider #button-2:checked~#slides>div #image-1,
+            #slider #button-3:checked~#slides>div #image-2,
+            #slider #button-3:checked~#slides>div #image-1,
+            #slider #button-4:checked~#slides>div #image-3,
+            #slider #button-4:checked~#slides>div #image-2,
+            #slider #button-4:checked~#slides>div #image-1 {
+                transform: rotateY(10deg) scale(0.8) translateX(10%);
+                -webkit-transform: rotateY(10deg) scale(0.8) translateX(10%);
+                -moz-transform: rotateY(10deg) scale(0.8) translateX(10%);
+                -o-transform: rotateY(10deg) scale(0.8) translateX(10%);
+                -ms-transform: rotateY(10deg) scale(0.8) translateX(10%);
+                z-index: 0;
+                opacity: 0.5;
+            }
+            #slider #button-1:checked~#slides>div #image-1 .info,
+            #slider #button-2:checked~#slides>div #image-2 .info,
+            #slider #button-3:checked~#slides>div #image-3 .info,
+            #slider #button-4:checked~#slides>div #image-4 .info {
+                top: 82.1%;
+            }
+            #slider #button-1:checked ~ #slides > div #image-1,
+            #slider #button-2:checked ~ #slides > div #image-2,
+            #slider #button-3:checked ~ #slides > div #image-3,
+            #slider #button-4:checked ~ #slides > div #image-4 {
+                box-shadow: 0 20px 10px rgba(0, 0, 0, 0.5);
+            }
+            #slider #button-1:checked~#slides>div>span {
+                left: 5%;
+            }
+            #slider #button-2:checked~#slides>div>span {
+                left: -5%;
+            }
+            #slider #button-3:checked~#slides>div>span {
+                left: -15%;
+            }
+            #slider #button-4:checked~#slides>div>span {
+                left: -25%;
+            }
+            /*music2 시작*/
+            .in-Music-2 .in {
+                width: 25%;
+                height: 100%;
+            }
+            .Music2-1 img,
+            .Music2-2 img,
+            .Music2-3 img,
+            .Music2-4 img {
+                transition: all 0.5s ease-in-out;
+                -webkit-transition: all 0.5s ease-in-out;
+                -moz-transition: all 0.5s ease-in-out;
+                -o-transition: all 0.5s ease-in-out;
+                -ms-transition: all 0.5s ease-in-out;
+                transform: scale(1, 1) translate(0, 0);
+                -webkit-transform: scale(1, 1) translate(0, 0);
+                -moz-transform: scale(1, 1) translate(0, 0);
+                -o-transform: scale(1, 1) translate(0, 0);
+                -ms-transform: scale(1, 1) translate(0, 0);
+            }
+            .Music2-1:hover img,
+            .Music2-2:hover img,
+            .Music2-3:hover img,
+            .Music2-4:hover img {
+                filter: blur(3px);
+                opacity: 0.2;
+                transform: scale(1.1, 1.1) translate(-11.5%, 0);
+                -webkit-transform: scale(1.1, 1.1) translate(-11.5%, 0);
+                -moz-transform: scale(1.1, 1.1) translate(-11.5%, 0);
+                -o-transform: scale(1.1, 1.1) translate(-11.5%, 0);
+                -ms-transform: scale(1.1, 1.1) translate(-11.5%, 0);
+            }
+            .in .Music-text {
+                opacity: 0;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                transition: all 0.5s ease-out;
+                -webkit-transition: all 0.5s ease-out;
+                -moz-transition: all 0.5s ease-out;
+                -o-transition: all 0.5s ease-out;
+                -ms-transition: all 0.5s ease-out;
+            }
+            .Music2-1:hover .text-1,
+            .Music2-2:hover .text-2,
+            .Music2-3:hover .text-3,
+            .Music2-4:hover .text-4 {
+                opacity: 1;
+            }
+            /*고객지원시작*/
+            #Custom {
+                height: 700px;
+            }
+            #Custom h3 {
+                opacity: 0;
+                transition: all 0.7s ease-out;
+                -webkit-transition: all 0.7s ease-out;
+                -moz-transition: all 0.7s ease-out;
+                -o-transition: all 0.7s ease-out;
+                -ms-transition: all 0.7s ease-out;
+            }
+            #Custom:hover h3 {
+                opacity: 1;
+            }
+            #Custom a {
+                width: 0;
+                overflow: hidden;
+                transition: all 0.7s ease;
+                -webkit-transition: all 0.7s ease;
+                -moz-transition: all 0.7s ease;
+                -o-transition: all 0.7s ease;
+                -ms-transition: all 0.7s ease;
+            }
+            #Custom:hover a {
+                width: 15%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <input class="full-nav" id="full-nav" type="checkbox" />
+
+        <label class="full-label" for="full-nav">
+            <span class="full-span"></span>
+            <span class="full-span"></span>
+            <span class="full-span"></span>
+        </label>
+        <nav>
+            <ul class="full-nav-ul">
+                <li>
+                    <a class="full-nav-a" href="#" data-content="Apple">Apple
+                    </a>
+                </li>
+                <li>
+                    <a class="full-nav-a" href="#" data-content="Mac">Mac
+                    </a>
+                </li>
+                <li>
+                    <a class="full-nav-a" href="#" data-content="iPad">iPad
+                    </a>
+                </li>
+                <li>
+                    <a class="full-nav-a" href="#" data-content="iPhone">iPhone
+                    </a>
+                </li>
+                <li>
+                    <a class="full-nav-a" href="#" data-content="Wacth">Wacth
+                    </a>
+                </li>
+                <li>
+                    <a class="full-nav-a" href="#" data-content="Music">Music
+                    </a>
+                </li>
+                <li>
+                    <a class="full-nav-a last" href="#" data-content="고객지원">고객지원
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <article id="main">
+            <div id="mainM">
+                <div class="video">
+                    <video autoplay loop muted>
+                        <source src="images/Apple.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </article>
+        <article id="search">
+            <div class="searchBox">
+                <form class="searchform group">
+                    <label for="search-box">
+                        <span class="fa fa-2x fa-search"></span>
+                    </label>
+
+                    <input type="search" id="search-box" placeholder="&ensp;무엇이든 물어보세요.">
+                </form>
+            </div>
+        </article>
+        <article id="iMac">
+            <div class="iMac">
+                <div class="in-iMac1">
+                    <img src="images/iMac.png" class="in-iMac-img">
+                    <img src="images/iMacbg.png" class="in-iMac-bg">
+                </div>
+                <div class="in-iMac2">
+                    <div class="in-iMac-text">
+                        <h1>iMac Pro</h1>
+                        <h3>프로를 프로답게</h3>
+                        <p>프로들이 사랑하는 iMac. 그래서 iMac의 끝판왕을 만들어달라는 프로들의 부탁에,
+                            <br> 우리는 갈 데까지 가보자는 마음으로 임했죠. 그리고 그대로 목표 저 너머까지 달렸습니다.
+                            <br> 워크스테이션급의 그래픽 카드, 프로세서, 저장 장치, 메모리, I/O가 모여 아찔할 정도의
+                            <br> 성능을 뽐내는 iMac은 그렇게 탄생했죠. 이 모든 성능을 구현하면서도 iMac의 상징인
+                            <br> 완벽한 올인원 디자인은 단 1mm도 늘리지 않았습니다. 이를 통해 영상 편집 기사는 물론
+                            <br> 3D 애니메이터, 음악가, 소프트웨어 개발자, 과학자 등 세상의 모든 프로가 자신의
+                            <br> 작업을 전과는 다른 수준으로 할 수 있게 되었죠. 새롭게 선보이는 iMac Pro, 군더더기
+                            <br> 없는 강력한 성능을 자랑하는 꿈의 컴퓨터입니다.</p>
+                        <p>12월 출시</p>
+                        <a href="#">더 알아보기 ></a>
+                    </div>
+                    <div class="in-iMac-bg2">
+                        <img src="images/iMac2.JPG">
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="iPad">
+            <div class="in-iPad">
+                <div class="iPad-1">
+                    <h1>iPad Pro</h1>
+                    <h3>어제의 능력을 가볍게 뛰어넘다.</h3>
+                    <a href="#">더 알아보기 ></a>
+                    <img src="images/iPadM-1.png">
+                </div>
+                <div class="iPad-2">
+                    <img src="images/iPadM.png" class="iPad-2-img">
+                    <div class="iPad-Bar">
+                        <h3>새로운 iPad Pro 재생률</h3>
+                        <img src="images/iPad-Bar.png">
+                        <p>120Hz</p>
+                        <p>재생률</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="iPhone">
+            <div class="in-iPhone1">
+                <p>Special Edition</p>
+                <h1>iPhone7</h1>
+                <img src="images/red.png">
+                <h3>
+                    (RED)를 사다.<br>
+                    미래를 살리다.
+                </h3>
+                <div class="in-iPhone2">
+                    <img src="images/red2.png">
+                    <p>(RED)제품을 사거나 선물할 때마다
+                        <br>당신 역시 변화의 물결에 힘을 보태게 됩니다.</p>
+                    <a href="#">더 알아보기 ></a>
+                </div>
+            </div>
+        </article>
+        <article id="Watch">
+            <div class="Watch">
+                <div class="in-Watch inWatch">
+                    <div class="Watch-11 in-11">
+                        <h1>series 2</h1>
+                        <h3>어제보다 더 나은 오늘</h3>
+                        <p><a href="#">더 알아보기 ></a></p>
+                    </div>
+                </div>
+                <div class="in-Watch">
+                    <div class="Watch-11 in-22">
+                        <h1>nike+</h1>
+                        <h3>스타일은 두개, 한계는 제로</h3>
+                        <p><a href="#">더 알아보기 ></a></p>
+                    </div>
+                </div>
+                <div class="in-Watch">
+                    <div class="Watch-11 in-33">
+                        <h1>hermes</h1>
+                        <h3>두 아이콘, 손을 잡다</h3>
+                        <p><a href="#">더 알아보기 ></a></p>
+                    </div>
+                </div>
+                <div class="in-Watch">
+                    <div class="Watch-11 in-44">
+                        <h1>edition</h1>
+                        <h3>새로운 소재로 빛나다</h3>
+                        <p><a href="#">더 알아보기 ></a></p>
+                    </div>
+                </div>
+                <div class="in-Watch">
+                    <div class="Watch-11 in-55">
+                        <h1>series 1</h1>
+                        <h3>일상은 활동적, 생활은 스마트</h3>
+                        <p><a href="#">더 알아보기 ></a></p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="Music">
+            <div id="in-Music">
+                <div id="in-Music1">
+                    <div id="slider">
+                        <h1>지금 Apple Music에선</h1>
+                        <input type="radio" id="button-1" name="controls" />
+                        <input type="radio" id="button-2" name="controls" checked />
+                        <input type="radio" id="button-3" name="controls" />
+                        <input type="radio" id="button-4" name="controls" />
+                        <label for="button-1" class="arrows" id="arrow-1">&#x25BB;</label>
+                        <label for="button-2" class="arrows" id="arrow-2">&#x25BB;</label>
+                        <label for="button-3" class="arrows" id="arrow-3">&#x25BB;</label>
+                        <label for="button-4" class="arrows" id="arrow-4">&#x25BB;</label>
+                        <div id="slides">
+                            <div class="tk-museo-sans">
+                                <span id="image-1"> 
+                                    <span class="info">
+                                        <p>G-DRAGON - 권지용 - EP</p>
+                                    </span>
+                                </span>
+                                <span id="image-2"> 
+                                    <span class="info">
+                                        <p>Lorde - Melodrama</p>
+                                    </span>
+                                </span>
+                                <span id="image-3">
+                                    <span class="info">
+                                        <p>재생목록 - Songs of the Summer: 2017</p>
+                                    </span>
+                                </span>
+                                <span id="image-4"> 
+                                    <span class="info">
+                                        <p>NCT 127 - NCT #127 CHERRY BOMB <br> - The 3rd Mini Album</p>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-Music-2">
+                <div id="in-Music2">
+                    <div class="in Music2-1">
+                        <img src="images/apple-airpods.jpeg">
+                        <img src="images/music5-2.png">
+                        <div class="Music-text text-1">
+                            <p>AirPods</p>
+                            <h1>선이 없다.<br> 경이롭다.</h1>
+                            <a href="#">AirPods에 대해 더 알아보기 ></a>
+                        </div>
+                    </div>
+                    <div class="in Music2-2">
+                        <img src="images/music6-1.png">
+                        <img src="images/music6-2.png">
+                        <div class="Music-text text-2">
+                            <p>iPod</p>
+                            <h1>음악을 사랑한다면, <br>어디서나 함께.</h1>
+                            <a href="#">iPod에 대해 더 알아보기 ></a>
+                        </div>
+                    </div>
+                    <div class="in Music2-3">
+                        <img src="images/music7-1.png">
+                        <img src="images/music7-2.png">
+                        <div class="Music-text text-3">
+                            <p>액세서리</p>
+                            <h1>음악에 흠뻑 빠지는 법.</h1>
+                            <a href="#">헤드폰 및 스피커 쇼핑하기 ></a>
+                        </div>
+                    </div>
+                    <div class="in Music2-4">
+                        <img src="images/music8-1.png">
+                        <img src="images/music8-2.png">
+                        <div class="Music-text text-4">
+                            <p>iTunes</p>
+                            <h1>음악을 중심에 두다.</h1>
+                            <a href="#">iTunes에 대해 더 알아보기 ></a>
+                            <a href="#">iTunes 다운로드 > </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <srticle id="Custom">
+            <h1>Apple 지원에 오신 것을 환영합니다</h1>
+            <h3>언제든지 도와 드리겠습니다.</h3>
+            <a href="#">고객지원 바로가기 ></a>
+        </srticle>
+    </section>
+    <footer>
+        <div id="footer">
+            <div class="top">
+                <p>* 신규 멤버에게만 적용됩니다. 가입이 필요합니다. 멤버쉽은 체험 기간이 끝나면 매월 자동 갱신됩니다.</p>
+            </div>
+            <div class="middle">
+                <i class="fa fa-apple" aria-hidden="true"></i>
+                <div class="footerM">
+                    <div class="footerM1">
+                        <p>쇼핑 및 알아보기</p>
+                        <ul>
+                            <li><a href="#">Mac</a></li>
+                            <li><a href="#">iPad</a></li>
+                            <li><a href="#">iPhone</a></li>
+                            <li><a href="#">Watch</a></li>
+                            <li><a href="#">Music</a></li>
+                            <li><a href="#">iTunes</a></li>
+                            <li><a href="#">iPod</a></li>
+                            <li><a href="#">액세서리</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerM2">
+                        <p>Apple Store</p>
+                        <ul>
+                            <li><a href="#">Apple Store App</a></li>
+                            <li><a href="#">리퍼 및 특가 제품</a></li>
+                            <li><a href="#">주문 상태</a></li>
+                            <li><a href="#">쇼핑 도움말</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerM3">
+                        <div class="in-footerM3-1">
+                            <p>교육</p>
+                            <ul>
+                                <li><a href="#">Apple 그리고 교육</a></li>
+                                <li><a href="#">대학 생활을 위한 제품 쇼핑하기</a></li>
+                            </ul>
+                        </div>
+                        <div class="in-footerM3-2">
+                            <p>계정</p>
+                            <ul>
+                                <li><a href="#">Apple ID 관리</a></li>
+                                <li><a href="#">Apple Store 계정</a></li>
+                                <li><a href="#">iCloud.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footerM4">
+                        <div class="in-footerM4-1">
+                            <p>비지니스</p>
+                            <ul>
+                                <li><a href="#">Apple과 비지니스</a></li>
+                                <li><a href="#">비지니스를 위한 제품 쇼핑하기</a></li>
+                            </ul>
+                        </div>
+                        <div class="in-footerM4-2">
+                            <p>Apple의 가치관</p>
+                            <ul>
+                                <li><a href="#">손쉬운 사용</a></li>
+                                <li><a href="#">환경</a></li>
+                                <li><a href="#">개인정보 보호</a></li>
+                                <li><a href="#">협력업체에 대한 책임</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footerM5">
+                        <p>Apple 정보</p>
+                        <ul>
+                            <li><a href="#">Newsroom</a></li>
+                            <li><a href="#">Apple 리더쉽</a></li>
+                            <li><a href="#">채용 안내</a></li>
+                            <li><a href="#">이벤트</a></li>
+                            <li><a href="#">Apple 연락처</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bottome">
+                <span>다양한 쇼핑 방법: <a>080-330-8877</a> 번으로 전화 또는 <a href="#">가까운 Apple 공인 리셀러 찾기</a></span>
+                <div class="in-bottome">
+                    <span><a>Copyright &copy; 2017 Apple Inc.</a> 모든 권리 보유.</span>
+                    <ul>
+                        <li><a href="#">개인정보 취급방침</a></li>
+                        <li><a href="#">약관</a></li>
+                        <li><a href="#">판매 및 환불</a></li>
+                        <li><a href="#">법적 고지</a></li>
+                        <li><a href="#">사이트 맵</a></li>
+                    </ul>
+                    <p>사업자등록번호 : 120-81-84429 | 통신판매업신고번호 : 제 2011-서울강남-00810호 | 대표이사 : DICICCO CANIEL CHARLES |</p>
+                    <p>주소 : 서울 특별시 강남구 영동대로 517(삼성동, 아셈타워 3901) | 대표전화: 02-6712-6700 | 팩스 : 02-6928-0000</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
